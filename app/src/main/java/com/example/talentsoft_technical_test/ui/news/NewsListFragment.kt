@@ -39,7 +39,7 @@ class NewsListFragment : Fragment() {
         })
     }
 
-    fun clickOnHolder(articleUi: ArticleUi) {
+    private fun clickOnHolder(articleUi: ArticleUi) {
         val action = NewsListFragmentDirections.actionNewsListFragmentToNewsDetailsFragment(articleUi)
         findNavController().navigate(action)
     }

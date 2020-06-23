@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TalentSoft_Technical_Test</string>
+    <string name="fragment_news_details_button_article">Article</string>
 </resources>

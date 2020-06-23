@@ -4,7 +4,7 @@ data class ArticleApi(
     val source: ArticleSourceApi,
     val author: String?,
     val title: String,
-    val description: String,
+    val description: String?,
     val url: String,
     val urlToImage: String,
     val publishedAt: String,
