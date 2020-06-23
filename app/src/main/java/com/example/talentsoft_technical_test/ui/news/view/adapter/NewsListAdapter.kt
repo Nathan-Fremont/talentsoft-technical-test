@@ -1,21 +1,25 @@
 package com.example.talentsoft_technical_test.ui.news.view.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.talentsoft_technical_test.R
 import com.example.talentsoft_technical_test.ui.news.model.ArticleUi
-import com.example.talentsoft_technical_test.ui.news.model.PageNewsListUi
 import com.example.talentsoft_technical_test.ui.news.view.NewsViewHolder
 
-class NewsListAdapter : ListAdapter<ArticleUi, NewsViewHolder>(diffCallback) {
+class NewsListAdapter(val clickOnHolderCallback: ((articleUi: ArticleUi) -> Unit)) : ListAdapter<ArticleUi, NewsViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.holder_news, parent, false)
         val holder = NewsViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.holder_news, parent, false)
-        )
+            view
+        ).apply {
+            itemView.setOnClickListener {
+                val articleUi = getItem(adapterPosition)
+                clickOnHolderCallback(articleUi)
+            }
+        }
         return holder
     }
 
