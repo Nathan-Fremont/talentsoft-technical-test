@@ -1,5 +1,6 @@
 package com.example.talentsoft_technical_test.repository.api
 
+import android.util.Log
 import com.example.talentsoft_technical_test.repository.ApiDataSource
 import com.example.talentsoft_technical_test.repository.api.model.news.ArticlesListApi
 import com.google.gson.Gson
@@ -9,12 +10,13 @@ import java.io.IOException
 class ApiDataSourceImpl : ApiDataSource {
     private val okHttpClient by lazy { OkHttpClient() }
 
-    override fun getNews(url: String): ArticlesListApi {
+    override fun getNews(): ArticlesListApi {
         val request = Request.Builder()
             .url(NEWS_URL)
             .build()
         val stringBody = okHttpClient.newCall(request).execute().body?.string()
         val articlesList = Gson().fromJson(stringBody, ArticlesListApi::class.java)
+        Log.i("getNews", stringBody)
         return articlesList
     }
 

@@ -7,6 +7,6 @@ class GetNewsUseCase(
     private val repository: Repository
 ) {
     operator fun invoke(): List<Article> {
-        return repository.getNews("")
+        return repository.getNews()
     }
 }
