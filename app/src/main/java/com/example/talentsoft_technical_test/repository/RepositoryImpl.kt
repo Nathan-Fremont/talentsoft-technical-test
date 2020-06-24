@@ -11,13 +11,12 @@ class RepositoryImpl(
         return apiDataSource.getNews().articles
             .filter { articleApi ->
                 articleApi.content != null
-                        && articleApi.description != null
             }
             .map { articleApi ->
                 Article(
                     articleApi.author,
                     articleApi.title,
-                    articleApi.description!!,
+                    articleApi.description,
                     articleApi.url,
                     articleApi.urlToImage,
                     articleApi.publishedAt,
