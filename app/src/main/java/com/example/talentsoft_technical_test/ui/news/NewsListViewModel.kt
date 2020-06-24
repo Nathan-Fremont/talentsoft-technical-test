@@ -1,6 +1,5 @@
 package com.example.talentsoft_technical_test.ui.news
 
-import androidx.lifecycle.ViewModel
 import com.example.talentsoft_technical_test.domain.usecase.GetNewsUseCase
 import com.example.talentsoft_technical_test.repository.RepositoryImpl
 import com.example.talentsoft_technical_test.repository.api.ApiDataSourceImpl
