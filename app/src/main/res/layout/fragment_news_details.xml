@@ -5,6 +5,9 @@
 
     <data>
 
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
+
         <variable
             name="viewModel"
             type="com.example.talentsoft_technical_test.ui.news_details.NewsDetailsViewModel" />
@@ -55,7 +58,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_image"
                 tools:text="Description"
+                android:visibility="@{TextUtils.isEmpty(viewModel.uiData.description) ? View.GONE : View.VISIBLE}"
                 android:textColor="@android:color/white"
+                android:padding="@dimen/spacing_value_half"
                 android:background="@color/black_50"/>
 
             <TextView
