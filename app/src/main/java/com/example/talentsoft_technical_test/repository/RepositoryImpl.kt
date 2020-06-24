@@ -24,4 +24,22 @@ class RepositoryImpl(
                 )
             }
     }
+
+    override fun getNewsFromSource(source: String): List<Article> {
+        return apiDataSource.getNewsFromSource(source).articles
+            .filter { articleApi ->
+                articleApi.content != null
+            }
+            .map { articleApi ->
+                Article(
+                    articleApi.author,
+                    articleApi.title,
+                    articleApi.description,
+                    articleApi.url,
+                    articleApi.urlToImage,
+                    articleApi.publishedAt,
+                    articleApi.content!!
+                )
+            }
+    }
 }
