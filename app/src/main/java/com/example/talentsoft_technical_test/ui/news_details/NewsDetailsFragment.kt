@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.example.talentsoft_technical_test.R
 import com.example.talentsoft_technical_test.databinding.FragmentNewsDetailsBinding
@@ -34,6 +35,9 @@ class NewsDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val articleUi = args.articleUi
+        viewModel.uiData.observe(viewLifecycleOwner, Observer {
+            binding.viewModel = viewModel
+        })
         viewModel.setArticleData(articleUi, View.OnClickListener {
             val i = Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse(articleUi.url)
